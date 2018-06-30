@@ -1,31 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class OJM_Player : MonoBehaviour {
+
+    public Text runtext, jumptext, loadtext;
+    private int loadtextcount = 0;
 
     /*
     jumping and movement
     sweep test for ludicrous speed
     decent turning with the analog stick conversion
-    trigger reaction for touching the ground and being able to jump
+    trigger reaction for touching the ground and being able to JumpStat
     trigger reaction for 
     */
     private enum OJM_State { Ground, Air, Stun };
     public int State;
     private int StunFrames;
-    private float BaseRun = 10;
+
+    // change me, change the display run display jump please
+    private float BaseRun = 4;//10
+    private float BaseJump = 6;//12
     private float BaseTurnGround = 2f;
     private float BaseTurnAir = 0.045f;
-    private float BaseJump = 12;
-    public float Run;
+    public float RunStat;
     public float TurnGround;
     public float TurnAir;
-    public float Jump;
+    public float JumpStat;
+
     private float Horizontal;
     private float Vertical;
     public KeyCode JumpKey;
     public KeyCode LoadKey;
+    public KeyCode ResetKey;
     public Rigidbody Body;
     private Quaternion LastRotation;
     private Vector3 LastPosition;
@@ -33,6 +42,10 @@ public class OJM_Player : MonoBehaviour {
 
     private int JumpLeniency = 5;
     private int AirTime = 0;
+    public CameraFollow cam;
+
+    private float ExerciseJump = 0.7f;
+    private float ExerciseJumpMash = 0.18f;
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.collider.CompareTag("OOB")) {
@@ -61,6 +74,8 @@ public class OJM_Player : MonoBehaviour {
             return;
         }
         State = (int)OJM_State.Ground;
+        cam.Ground();
+        
     }
     private void OnTriggerExit(Collider other) {
         if (State != (int)OJM_State.Stun) {
@@ -74,11 +89,12 @@ public class OJM_Player : MonoBehaviour {
         Application.targetFrameRate = 60;
         JumpKey = KeyCode.Space;
         LoadKey = KeyCode.L;
+        ResetKey = KeyCode.R;
         State = (int)OJM_State.Air;
-        Run = BaseRun;
+        RunStat = BaseRun;
         TurnGround = BaseTurnGround;
         TurnAir = BaseTurnAir;
-        Jump = BaseJump;
+        JumpStat = BaseJump;
         SaveLast();
 	}
 
@@ -95,14 +111,43 @@ public class OJM_Player : MonoBehaviour {
     }
 
     public void LoadLast() {
+        loadtext.text = "Reloads: " + ++loadtextcount;
         Body.velocity = Vector3.zero;
         transform.rotation = LastRotation;
         transform.position = LastPosition;
         State = LastState;
     }
 
+    private void Jump() {
+        cam.Jump();
+        Stun(5);
+        JumpStat += ExerciseJump;
+        jumptext.color = new Color(0, 120, 120);
+        Body.velocity = Body.velocity + new Vector3(0, JumpStat, 0);
+    }
+
     // Update is called once per frame
     void FixedUpdate() {
+
+        if (Input.GetKeyDown(ResetKey)) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        Horizontal = Input.GetAxis("Horizontal");
+        Vertical = Input.GetAxis("Vertical");
+
+        if (RunStat > BaseRun) {
+            RunStat -= 0.05f;
+        }
+
+        if (Input.GetKeyDown(JumpKey)) {
+            JumpStat += ExerciseJumpMash;
+            jumptext.color = new Color(0, 120, 120);
+        }
+        if (JumpStat > BaseJump) {
+            JumpStat -= 0.01f;
+        }
+
         if (Input.GetKeyDown(LoadKey)) {
             LoadLast();
         }
@@ -114,29 +159,46 @@ public class OJM_Player : MonoBehaviour {
             return; // ===
         }
 
-        Horizontal = Input.GetAxis("Horizontal");
-        Vertical = Input.GetAxis("Vertical");
 
         if (State == (int)OJM_State.Air) {
+            runtext.color = new Color(50, 50, 50);
             if (AirTime > 0) {
                 AirTime--;
                 if (Input.GetKeyDown(JumpKey)) {
-                    Stun(5);
-                    Body.velocity = Body.velocity + new Vector3(0, Jump, 0);
+                    Jump();
                 }
+            }
+            if (Input.GetKeyDown(JumpKey)) {
+                JumpStat += ExerciseJump / 2;
+                jumptext.color = new Color(0, 255, 0);
             }
             transform.Rotate(0, TurnAir * Horizontal / 2 / Mathf.PI * 360, 0);
             float cos = Mathf.Cos(TurnAir * Horizontal);
             float sin = Mathf.Sin(TurnAir * Horizontal);
             Body.velocity = new Vector3(Body.velocity.x * cos + Body.velocity.z * sin, Body.velocity.y, Body.velocity.x * -sin + Body.velocity.z * cos);
+
         } else if (State == (int)OJM_State.Ground) {
+            jumptext.color = new Color(50, 50, 50);
+            cam.Ground();
+            if (Vertical != 0) {
+                runtext.color = new Color(0, 255, 0);
+                RunStat += 0.3f;
+            } else {
+                if (RunStat > BaseRun) {
+                    RunStat -= 0.15f;
+                    runtext.color = new Color(255, 0, 0);
+                }
+                if (JumpStat > BaseJump) {
+                    JumpStat -= 0.018f;
+                    jumptext.color = new Color(255, 0, 0);
+                }
+            }
             transform.Rotate(0, TurnGround * Horizontal, 0);
             Vector3 zed = transform.forward;
             zed = Vector3.Normalize(zed);
-            Body.velocity = zed * (Run) * Vertical;
+            Body.velocity = zed * (RunStat) * Vertical;
             if (Input.GetKeyDown(JumpKey)) {
-                Stun(5);
-                Body.velocity = Body.velocity + new Vector3(0, Jump, 0);
+                Jump();
             }
         }
     }
@@ -146,6 +208,9 @@ public class OJM_Player : MonoBehaviour {
 /*
 * CODE GRAVEYARD
             
+        if (collision.collider.CompareTag("boost")) {
+            return;
+        }
 // during ojmstate ground for strafe controls
 Vector3 ex = Vector3.zero;
 Vector3 ex = transform.right * Horizontal; 
