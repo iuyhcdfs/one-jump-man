@@ -13,3 +13,5 @@ Left/Right Arrow Keys: look to the left/right
 
 In the air: 
 Left/Right Arrow Keys: you can curve your midair flight very comfortably.
+
+i used a checkerboard wallpaper from http://wallpaperswide.com/checkerboard-wallpapers.html wew

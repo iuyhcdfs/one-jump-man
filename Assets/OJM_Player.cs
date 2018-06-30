@@ -54,11 +54,12 @@ public class OJM_Player : MonoBehaviour {
         }
     }
     private void OnTriggerEnter(Collider other) {
-        AirTime = 0;
         if (other.CompareTag("OOB")) {
             LoadLast();
             return;
         }
+        AirTime = 0;
+
         if (State == (int)OJM_State.Stun) {
             return;
         }

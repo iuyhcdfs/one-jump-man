@@ -15,5 +15,8 @@ public class DisplayJump : MonoBehaviour {
     void Update () {
         text.text = "Jump power: " + player.JumpStat.ToString();
         text.fontSize = (int) ( BaseSize + (player.JumpStat - BaseJump));
+        if (text.fontSize > 44) {
+            text.fontSize = 44;
+        }
     }
 }
