@@ -122,7 +122,7 @@ public class OJM_Player : MonoBehaviour {
     private void Jump() {
         cam.Jump();
         Stun(5);
-        JumpStat += ExerciseJump;
+        JumpStat += ExerciseJump/2;
         jumptext.color = new Color(0, 120, 120);
         Body.velocity = Body.velocity + new Vector3(0, JumpStat, 0);
     }
@@ -137,16 +137,10 @@ public class OJM_Player : MonoBehaviour {
         Horizontal = Input.GetAxis("Horizontal");
         Vertical = Input.GetAxis("Vertical");
 
-        if (RunStat > BaseRun) {
-            RunStat -= 0.05f;
-        }
-
+        
         if (Input.GetKeyDown(JumpKey)) {
-            JumpStat += ExerciseJumpMash;
+            JumpStat += ExerciseJumpMash/2;
             jumptext.color = new Color(0, 120, 120);
-        }
-        if (JumpStat > BaseJump) {
-            JumpStat -= 0.01f;
         }
 
         if (Input.GetKeyDown(LoadKey)) {
@@ -170,7 +164,7 @@ public class OJM_Player : MonoBehaviour {
                 }
             }
             if (Input.GetKeyDown(JumpKey)) {
-                JumpStat += ExerciseJump / 2;
+                JumpStat += ExerciseJump / 4;
                 jumptext.color = new Color(0, 255, 0);
             }
             transform.Rotate(0, TurnAir * Horizontal / 2 / Mathf.PI * 360, 0);
@@ -183,16 +177,9 @@ public class OJM_Player : MonoBehaviour {
             cam.Ground();
             if (Vertical != 0) {
                 runtext.color = new Color(0, 255, 0);
-                RunStat += 0.3f;
+                RunStat += 0.15f;
             } else {
-                if (RunStat > BaseRun) {
-                    RunStat -= 0.15f;
-                    runtext.color = new Color(255, 0, 0);
-                }
-                if (JumpStat > BaseJump) {
-                    JumpStat -= 0.018f;
-                    jumptext.color = new Color(255, 0, 0);
-                }
+                
             }
             transform.Rotate(0, TurnGround * Horizontal, 0);
             Vector3 zed = transform.forward;
