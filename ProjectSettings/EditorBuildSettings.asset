@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/A tutorial.unity
     guid: 62c33b20a6b9a3546a9b2b1a4b0b1778
   - enabled: 1
-    path: Assets/Scenes/B tunnel.unity
+    path: Assets/Scenes/B funnel.unity
     guid: dece9a98c3a866c45b1ce3a76a89ce06
   - enabled: 1
     path: Assets/Scenes/C challenge.unity

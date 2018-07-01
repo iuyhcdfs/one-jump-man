@@ -47,7 +47,7 @@ public class OJM_Player : MonoBehaviour {
     private int AirTime = 0;
     public CameraFollow cam;
 
-    private float ExerciseJump = 1.2f;
+    private float ExerciseJump = 2.1f;
     private float ExerciseJumpMash = 0.32f;
     
     private void OnCollisionEnter(Collision collision) {
@@ -129,7 +129,7 @@ public class OJM_Player : MonoBehaviour {
     private void Jump() {
         cam.Jump();
         Stun(5);
-        JumpStat += ExerciseJump/2;
+        JumpStat += ExerciseJump;
         jumptext.color = new Color(0, 120, 120);
         Body.velocity = Body.velocity + new Vector3(0, JumpStat, 0);
     }
