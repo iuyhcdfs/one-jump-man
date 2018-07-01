@@ -6,6 +6,8 @@ TagManager:
   tags:
   - OOB
   - boost
+  - fkncylinder
+  - slide
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,7 @@ public class DisplayRun : MonoBehaviour {
         BaseSize = text.fontSize;
     }
     void Update() {
-        text.text = "Run speed : " + player.RunStat.ToString();
+        text.text = "Run power : " + player.RunStat.ToString();
         text.fontSize = (int)(BaseSize + (player.RunStat - BaseRun));
         if (text.fontSize > 44) {
             text.fontSize = 44;

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CameraFollow : MonoBehaviour {
 
     public Transform Player;
@@ -20,6 +20,9 @@ public class CameraFollow : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        if (SceneManager.GetActiveScene().name == "B tunnel") {
+            useraycast = 1;
+        }
 		if(Player == null) {
             Debug.Log("oi give main camera the player");
             Debug.Break();
@@ -51,11 +54,11 @@ public class CameraFollow : MonoBehaviour {
     public void MaxJump(float inter) {
         interp = inter;
     }
+    public int useraycast = 0;
     private void FixedUpdate() {
         RaycastHit hit;
-
         if (target == 1) {
-            if (Physics.Raycast(JumpPosition, Player.position - JumpPosition, out hit, Mathf.Infinity, ~0)) {
+            if (useraycast == 1 && Physics.Raycast(JumpPosition, Player.position - JumpPosition, out hit, Mathf.Infinity, ~0)) {
                 if (!hit.collider.CompareTag("Player")) {
                     transform.localPosition = BirdPosition;
                     transform.localRotation = BirdRotation;
@@ -69,7 +72,7 @@ public class CameraFollow : MonoBehaviour {
             interp += jumpaccel;
             jumpaccel += 0.08f;
         } else if (target == 0) {
-            if (Physics.Raycast(GoalPosition, Player.position - GoalPosition, out hit, Mathf.Infinity, ~0)) {
+            if (useraycast == 1 && Physics.Raycast(GoalPosition, Player.position - GoalPosition, out hit, Mathf.Infinity, ~0)) {
                 if (!hit.collider.CompareTag("Player")) {
                     transform.localPosition = BirdPosition;
                     transform.localRotation = BirdRotation;

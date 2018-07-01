@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class OJM_Player : MonoBehaviour {
 
     public Text runtext, jumptext, loadtext;
@@ -38,22 +39,24 @@ public class OJM_Player : MonoBehaviour {
     public Rigidbody Body;
     private Quaternion LastRotation;
     private Vector3 LastPosition;
+    private Quaternion LastRotation2;
+    private Vector3 LastPosition2;
     private int LastState;
 
-    private int JumpLeniency = 5;
+    private int JumpLeniency = 7;
     private int AirTime = 0;
     public CameraFollow cam;
 
-    private float ExerciseJump = 0.7f;
-    private float ExerciseJumpMash = 0.18f;
-
+    private float ExerciseJump = 1.2f;
+    private float ExerciseJumpMash = 0.32f;
+    
     private void OnCollisionEnter(Collision collision) {
         if (collision.collider.CompareTag("OOB")) {
             LoadLast();
             return;
         }
-    }
-    private void OnTriggerEnter(Collider other) {
+    }/*
+    public void TriggerEnter(Collider other) {
         if (other.CompareTag("OOB")) {
             LoadLast();
             return;
@@ -63,9 +66,8 @@ public class OJM_Player : MonoBehaviour {
         if (State == (int)OJM_State.Stun) {
             return;
         }
-        SaveLast();
-    }
-    private void OnTriggerStay(Collider other) {
+    }*/
+    public void TriggerStay(Collider other) {
         AirTime = 0;
         if (other.CompareTag("OOB")) {
             LoadLast();
@@ -74,11 +76,12 @@ public class OJM_Player : MonoBehaviour {
         if (State == (int)OJM_State.Stun) {
             return;
         }
-        State = (int)OJM_State.Ground;
-        cam.Ground();
-        
+        if (!other.CompareTag("slide")) {
+            State = (int)OJM_State.Ground;
+            cam.Ground();
+        }
     }
-    private void OnTriggerExit(Collider other) {
+    public void TriggerExit(Collider other) {
         if (State != (int)OJM_State.Stun) {
             AirTime = JumpLeniency;
         }
@@ -106,6 +109,8 @@ public class OJM_Player : MonoBehaviour {
     }
 
     public void SaveLast() {
+        LastRotation2 = LastRotation;
+        LastPosition2 = LastPosition;
         LastRotation = transform.rotation;
         LastPosition = transform.position;
         LastState = State;
@@ -114,9 +119,11 @@ public class OJM_Player : MonoBehaviour {
     public void LoadLast() {
         loadtext.text = "Reloads: " + ++loadtextcount;
         Body.velocity = Vector3.zero;
-        transform.rotation = LastRotation;
-        transform.position = LastPosition;
-        State = LastState;
+        transform.rotation = LastRotation2;
+        // new
+        transform.position = LastPosition2 + new Vector3(0,1,0);
+        State = (int)OJM_State.Air;
+        //State = LastState;
     }
 
     private void Jump() {

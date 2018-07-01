@@ -248,7 +248,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 317594555}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -4.14, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 359082762}
   - component: {fileID: 359082761}
   - component: {fileID: 359082760}
+  - component: {fileID: 359082764}
   m_Layer: 0
   m_Name: Plane (6)
   m_TagString: Untagged
@@ -280,7 +281,7 @@ MeshCollider:
   m_GameObject: {fileID: 359082759}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -341,6 +342,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: -16.883001, y: 14.366001, z: 3.2110002}
+--- !u!65 &359082764
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 359082759}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.00000029802322, z: 9.999999}
+  m_Center: {x: 0, y: -0.0000019073486, z: -0.0000076293945}
 --- !u!1 &371914645
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,6 +365,7 @@ GameObject:
   - component: {fileID: 371914648}
   - component: {fileID: 371914647}
   - component: {fileID: 371914646}
+  - component: {fileID: 371914650}
   m_Layer: 0
   m_Name: Plane (5)
   m_TagString: Untagged
@@ -367,7 +381,7 @@ MeshCollider:
   m_GameObject: {fileID: 371914645}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -428,6 +442,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: -16.883001, y: 14.366001, z: 3.2110002}
+--- !u!65 &371914650
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 371914645}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.00000029802322, z: 9.999999}
+  m_Center: {x: 0, y: 0.0000009536743, z: 0.0000076293945}
 --- !u!1001 &546824324
 Prefab:
   m_ObjectHideFlags: 0
@@ -607,6 +633,7 @@ GameObject:
   - component: {fileID: 963635368}
   - component: {fileID: 963635367}
   - component: {fileID: 963635366}
+  - component: {fileID: 963635370}
   m_Layer: 0
   m_Name: Plane (1)
   m_TagString: Untagged
@@ -622,7 +649,7 @@ MeshCollider:
   m_GameObject: {fileID: 963635365}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -683,6 +710,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -25.225, y: 56.121002, z: 9.589001}
+--- !u!65 &963635370
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 963635365}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.00000040978193, z: 10.000002}
+  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!1 &1069444269
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,6 +1101,7 @@ GameObject:
   - component: {fileID: 1412106492}
   - component: {fileID: 1412106491}
   - component: {fileID: 1412106490}
+  - component: {fileID: 1412106494}
   m_Layer: 0
   m_Name: Plane (3)
   m_TagString: Untagged
@@ -1077,7 +1117,7 @@ MeshCollider:
   m_GameObject: {fileID: 1412106489}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -1138,6 +1178,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: -29.361002, y: 39.086002, z: 13.616}
+--- !u!65 &1412106494
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1412106489}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.000001, y: 0.00000074505806, z: 10.000001}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1416445928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,6 +1201,7 @@ GameObject:
   - component: {fileID: 1416445931}
   - component: {fileID: 1416445930}
   - component: {fileID: 1416445929}
+  - component: {fileID: 1416445933}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -1164,7 +1217,7 @@ MeshCollider:
   m_GameObject: {fileID: 1416445928}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -1225,6 +1278,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -8.613001, y: -7.1280003, z: -21.238}
+--- !u!65 &1416445933
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1416445928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.00000018626451, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1465467175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,7 +1387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d762614c2e47c554f85e61b876eeb240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextLevel: B tunnel
+  NextLevel: B funnel
 --- !u!1 &1733380063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,6 +1399,7 @@ GameObject:
   - component: {fileID: 1733380066}
   - component: {fileID: 1733380065}
   - component: {fileID: 1733380064}
+  - component: {fileID: 1733380068}
   m_Layer: 0
   m_Name: Plane (4)
   m_TagString: Untagged
@@ -1349,7 +1415,7 @@ MeshCollider:
   m_GameObject: {fileID: 1733380063}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -1413,6 +1479,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: -29.361002, y: 39.086002, z: 13.616}
+--- !u!65 &1733380068
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1733380063}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.000001, y: 0.00000074505806, z: 10.000001}
+  m_Center: {x: -0.0000019073486, y: 0, z: 0}
 --- !u!4 &1889081849 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4455700419389556, guid: aeb91d83e9baee14a9386e82121aaaed,
@@ -1457,20 +1535,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1522932178435634, guid: aeb91d83e9baee14a9386e82121aaaed, type: 2}
-      propertyPath: m_Name
-      value: timer
-      objectReference: {fileID: 0}
-    - target: {fileID: 224421463828182366, guid: aeb91d83e9baee14a9386e82121aaaed,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 224421463828182366, guid: aeb91d83e9baee14a9386e82121aaaed,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -150
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aeb91d83e9baee14a9386e82121aaaed, type: 2}
   m_IsPrefabParent: 0
@@ -1485,6 +1549,7 @@ GameObject:
   - component: {fileID: 2016951915}
   - component: {fileID: 2016951914}
   - component: {fileID: 2016951913}
+  - component: {fileID: 2016951917}
   m_Layer: 0
   m_Name: Plane (2)
   m_TagString: Untagged
@@ -1500,7 +1565,7 @@ MeshCollider:
   m_GameObject: {fileID: 2016951912}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -1561,6 +1626,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: -8.613001, y: -7.1280003, z: -21.238}
+--- !u!65 &2016951917
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2016951912}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.00000018626451, z: 10}
+  m_Center: {x: 0.0000038146973, y: 0, z: 0}
 --- !u!4 &2091942981 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4452720004908644, guid: a215f3b28b7da0847a4dc262d97e9267,

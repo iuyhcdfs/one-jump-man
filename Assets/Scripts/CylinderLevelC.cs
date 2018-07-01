@@ -8,7 +8,7 @@ public class CylinderLevelC : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        EulerSpeed = 0.3f;
+        EulerSpeed = -0.3f;
 	}
 	
 	// Update is called once per frame
