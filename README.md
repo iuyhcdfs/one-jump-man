@@ -6,6 +6,8 @@ the theme was "montage". the interpretation taken was the type of montage you'd 
 
 the Rocky montage lets the audience see an increase in the main character's strength in a short period of time.
 
+[Play it online here!](http://sannaigames.com/one-jump-man/)
+
 ## What happens in the game?
 
 It's a platformer where you quickly exercise to become physically able to clear levels.
